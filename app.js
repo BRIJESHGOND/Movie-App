@@ -6,8 +6,17 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let authToken = require('./middleware/authToken');
-let consts = require('./config/consts');
+
+
+const constants = require('./config/constant.json');
+const BASE_URL = constants.BASE_URL;
+const v1Routes = require('./app/v1Router');
+
+console.log('BASE_URL', BASE_URL)
+
+
+
+// let consts = require('./config/consts');
 
 /*
 var redis = require('redis');
@@ -42,17 +51,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.post('/ping', function (req, res) {
-  res.status(200).send('pong')
+
+// ============ VERSION WISE ROUTE CONTROL START ============
+app.use(v1Routes);
+// ============ VERSION WISE ROUTE CONTROL END ============
+
+app.get(BASE_URL + '/ping', function (req, res) {
+  res.status(200).send('pong');
 })
-
-
-/*API*/
-
-// app.post('/search', redis_post, require('./api/searchYT').search)
-app.post(consts.defaultUrl + '/searchVideo', authToken.validateAuthToken, require('./api/searchYT').searchVideo);
-
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

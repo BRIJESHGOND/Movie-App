@@ -1,8 +1,8 @@
-let consts = require('../config/consts');
+const constants = require('../config/constant.json');
 const validateAuthToken = (req, res, next) =>{
     if (req && req.headers && req.headers.authtoken) {
       let requestedToken = req.headers.authtoken;
-      if (requestedToken === consts.authtoken) {
+      if (requestedToken === constants.authtoken) {
         next()
       } else {
         res.status(401).send({

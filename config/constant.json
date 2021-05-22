@@ -1,0 +1,9 @@
+{
+    "BASE_URL": "/movieapp",
+    "V1" :"/v1",
+    "API": {
+      "getMovieDetails" :"/auto-complete",
+      "getVid":"/title/get-video-playback"
+    },
+    "authtoken":"n3GW3$8&@Jm3Ybj^U8K5"
+  }
