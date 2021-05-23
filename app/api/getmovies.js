@@ -20,20 +20,21 @@ let getMovies = async (req, res) => {
     }
 
     /* Get redis data */
-    const redisData = redisCache.getRedisData(reqBody.title);
-    if (!_.isNull(redisData)) {
-      return res.status(200).send({
-        status: 200,
-        message: 'success',
-        data: JSON.parse(redisData)
-      });
-    }
+    // const redisData = redisCache.getRedisData(reqBody.title);
+    // if (!_.isNull(redisData)) {
+    //   return res.status(200).send({
+    //     status: 200,
+    //     message: 'success',
+    //     data: JSON.parse(redisData)
+    //   });
+    // }
 
     /* get movie details*/
     const [errorMovie, resultMovies] = await safePromise(movieService.getMovieDetails(reqBody.title));
     if (errorMovie) {
       return res.status(400).send({
         success: false,
+        status: 400,
         message: errorMovie
       });
     }
@@ -68,25 +69,27 @@ let getMovies = async (req, res) => {
 
       /* Set redis data */
       if (!_.isNull(response) || !_.isEmpty(response)) {
-        let movieProcessedData = response;
-        const redisData = redisCache.setRedisData(reqBody.title, '', JSON.stringify(movieProcessedData));
+        redisCache.setRedisData(reqBody.title, '', JSON.stringify(response));
         return res.status(200).send({
           status: 200,
+          success: true,
           message: 'success',
-          data: JSON.parse(redisData)
+          data: response
         });
       } else {
         return res.status(200).send({
           status: 200,
-          message: 'success',
-          data: JSON.parse(response)
+          success: true,
+          message: 'No Movie Found',
+          data: []
         });
       }
     } else {
       return res.status(200).send({
         status: 200,
         success: true,
-        message: 'No Movie Found'
+        message: 'No Movie Found',
+        data: []
       });
     }
   } catch (error) {
