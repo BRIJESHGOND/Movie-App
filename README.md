@@ -22,6 +22,8 @@ npm start
 
 https://www.postman.com/collections/9d87c4ba0adb282774e0
 
+MovieApp > config > constant.json
+
 
 App Folder structure
 
