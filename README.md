@@ -6,6 +6,7 @@
 
 
 API Endpoint : movieapp/v1/getMovies
+
 Header: 
 authtoken : n3GW3$8&@Jm3Ybj^U8K5
 
@@ -19,16 +20,13 @@ To start app please follow below commands
 
 npm install
 npm start
+Postman Collection : https://www.postman.com/collections/9d87c4ba0adb282774e0
 
-https://www.postman.com/collections/9d87c4ba0adb282774e0
-
-MovieApp > config > constant.json
 
 
 App Folder structure
 
-app
-      api -> getmovies.js
+app > api > getmovies.js
       validation ->getmovies.js
       v1Router.js
 bin
