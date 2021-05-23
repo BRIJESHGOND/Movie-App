@@ -1,6 +1,6 @@
 const requireHelper = require('../../helper/require-helper');
 const safePromise = requireHelper.safePromise;
-const reqValidation = require('../validation/getMovie');
+const reqValidation = require('../validation/getmovies');
 const movieService = require('../../service/rapidApiService');
 const redisCache = require('../../helper/cache-helper');
 const _ = requireHelper._;
