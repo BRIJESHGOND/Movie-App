@@ -17,9 +17,9 @@ RequestBody :
 
 To start app please follow below commands
 
-npm install
-npm start
-Postman Collection : https://www.postman.com/collections/9d87c4ba0adb282774e0
+> npm install
+> npm start
+> Postman Collection : https://www.postman.com/collections/9d87c4ba0adb282774e0
 
 
 ## Folder structure
