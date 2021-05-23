@@ -29,7 +29,6 @@ To start app please follow below commands
       * getmovies.js
       * validation ->getmovies.js
       * v1Router.js
-* bin
 * config
      * constant.json
      * index.js
@@ -38,14 +37,10 @@ To start app please follow below commands
      * require-helper.js
 * middleware
      * authToken.js
-* nodemodule
+* node_modules
 * public
-* routes
-    * index.js
-    * users.js
 * service
     * httpService.js
     * rapidApiService.js
-* views
 * app.js
 * package.json
