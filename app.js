@@ -12,30 +12,7 @@ const constants = require('./config/constant.json');
 const BASE_URL = constants.BASE_URL;
 const v1Routes = require('./app/v1Router');
 
-console.log('BASE_URL', BASE_URL)
 
-
-
-// let consts = require('./config/consts');
-
-/*
-var redis = require('redis');
-let redisPort = process.env.PORT || 9000
-var client = redis.createClient();
-
-const redis_post = (req, res, next) => {
-  client.get('postData', (error, redisData) => {
-    if (error) {
-      throw error
-    } else if (redisData) {
-      console.log('inner', redisData);
-      res.send(redisData);
-    } else {
-      next();
-    }
-  })
-}
-*/
 var app = express();
 
 // view engine setup
@@ -77,7 +54,7 @@ app.use(function (err, req, res, next) {
 });
 
 let port = process.env.PORT || 2000
-console.log(`Server is running on port ${port}`)
+console.log(`Server is running on port ${port}`);
 app.listen(port)
 
 module.exports = app;

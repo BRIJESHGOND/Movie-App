@@ -25,7 +25,6 @@ const callRapidAPI = (url, httpMethod) => {
 const getMovieDetails = (title) => {
     return new Promise((resolve, reject) => {
         let endPoint = config.apiProvider.providerUrl + constant.API.getMovieDetails + '?q=' + encodeURIComponent(title);
-        console.log('endPoint-->', endPoint);
         callRapidAPI(endPoint, 'GET')
             .then(function (data) {
                 return resolve(data);

@@ -20,14 +20,14 @@ let getMovies = async (req, res) => {
     }
 
     /* Get redis data */
-    // const redisData = redisCache.getRedisData(reqBody.title);
-    // if (!_.isNull(redisData)) {
-    //   return res.status(200).send({
-    //     status: 200,
-    //     message: 'success',
-    //     data: JSON.parse(redisData)
-    //   });
-    // }
+    const redisData = redisCache.getRedisData(reqBody.title);
+    if (!_.isNull(redisData)) {
+      return res.status(200).send({
+        status: 200,
+        message: 'success',
+        data: JSON.parse(redisData)
+      });
+    }
 
     /* get movie details*/
     const [errorMovie, resultMovies] = await safePromise(movieService.getMovieDetails(reqBody.title));
