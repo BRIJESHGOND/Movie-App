@@ -1,5 +1,10 @@
 # Movie-App
 
+
+
+
+
+
 API Endpoint : movieapp/v1/getMovies
 Header: 
 authtoken : n3GW3$8&@Jm3Ybj^U8K5
