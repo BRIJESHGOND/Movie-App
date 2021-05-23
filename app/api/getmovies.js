@@ -69,7 +69,7 @@ let getMovies = async (req, res) => {
 
       /* Set redis data */
       if (!_.isNull(response) || !_.isEmpty(response)) {
-        redisCache.setRedisData(reqBody.title, '', JSON.stringify(response));
+        redisCache.setRedisData(reqBody.title, JSON.stringify(response));
         return res.status(200).send({
           status: 200,
           success: true,
