@@ -1,6 +1,6 @@
 
 let HttpService = require('./httpService');
-let config = require('../config/index');
+let config = require('../config/');
 let constant = require('../config/constant.json');
 
 
@@ -16,7 +16,6 @@ const callRapidAPI = (url, httpMethod) => {
                 return resolve(data);
             })
             .catch(function (error) {
-                console.log('error1111->', error)
                 return reject(error);
             });
     });
