@@ -15,15 +15,16 @@ RequestBody :
 }
 
 
-To start app please follow below commands
-
+ # How to run application.
  * npm install
  * npm start
- * Postman Collection : https://www.getpostman.com/collections/9d87c4ba0adb282774e0
+
+# Api collection
+   Postman Collection : https://www.getpostman.com/collections/9d87c4ba0adb282774e0
 
 
-
-# Sample .env File
+# Environment information
+## .env File
 > PORT = 3000 <br/>
 > NODE_ENV = Dev <br/>
 > API_PROVIDER = rapidapi <br/>
