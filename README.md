@@ -19,7 +19,9 @@ To start app please follow below commands
 
  * npm install
  * npm start
- * Postman Collection : https://www.postman.com/collections/9d87c4ba0adb282774e0
+ * Postman Collection : https://www.getpostman.com/collections/9d87c4ba0adb282774e0
+
+
 
 # Sample .env File
 > PORT = 3000 <br/>
