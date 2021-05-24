@@ -27,7 +27,7 @@ To start app please follow below commands
 > API_PROVIDER = rapidapi <br/>
 > REDIS_PORT = 6379 <br/>
 > REDIS_HOST = 127.0.0.1 <br/>
-> MOVIE_LIST_EXPIRES_IN = 10 <br/>
+> MOVIE_LIST_EXPIRES = 10 <br/>
 > API_KEY = 41d4b0f86bmsha20289999c670abp1a3220jsn62a460e4c0fb <br/>
 > PROVIDER_URL = https://imdb8.p.rapidapi.com <br/>
 > API_PROVIDER_HOST = imdb8.p.rapidapi.com <br/>
