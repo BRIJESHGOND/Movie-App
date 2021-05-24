@@ -22,16 +22,16 @@ To start app please follow below commands
  * Postman Collection : https://www.postman.com/collections/9d87c4ba0adb282774e0
 
 # Sample .env File
-> PORT = 3000
-> NODE_ENV = Dev
-> API_PROVIDER = rapidapi
-> REDIS_PORT = 6379
-> REDIS_HOST = 127.0.0.1
-> MOVIE_LIST_EXPIRES_IN = 10
-> API_KEY = 41d4b0f86bmsha20289999c670abp1a3220jsn62a460e4c0fb
-> PROVIDER_URL = https://imdb8.p.rapidapi.com
-> API_PROVIDER_HOST = imdb8.p.rapidapi.com
-> API_PROVIDER_USE_API_KEY = true
+> PORT = 3000 <br/>
+> NODE_ENV = Dev <br/>
+> API_PROVIDER = rapidapi <br/>
+> REDIS_PORT = 6379 <br/>
+> REDIS_HOST = 127.0.0.1 <br/>
+> MOVIE_LIST_EXPIRES_IN = 10 <br/>
+> API_KEY = 41d4b0f86bmsha20289999c670abp1a3220jsn62a460e4c0fb <br/>
+> PROVIDER_URL = https://imdb8.p.rapidapi.com <br/>
+> API_PROVIDER_HOST = imdb8.p.rapidapi.com <br/>
+> API_PROVIDER_USE_API_KEY = true <br/>
 
 Please note that in order to start this app you will require a ***'.env'_** file in the root folder of app
 .env
