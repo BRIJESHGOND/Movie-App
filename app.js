@@ -1,31 +1,27 @@
 const createError = require('http-errors');
 const express = require('express');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+global.absolutePath = __dirname;
 
+
+if (!process.env.NODE_ENV) require('dotenv').config({
+  path: absolutePath + '/.env'
+});
 
 const constants = require('./config/constant.json');
 const BASE_URL = constants.BASE_URL;
 const v1Routes = require('./app/v1Router');
-
-// LOAD ENV FILE START ==================================================
-// global.absolutePath = __dirname;
-// if (!process.env.NODE_ENV) require('dotenv').config({
-//   path: absolutePath + '/.env'
-// });
-// LOAD ENV FILE END ====================================================')
-
+const bodyParser = require('body-parser');
 const app = express();
+
+app.use(bodyParser.json({
+  limit: '1mb'
+}));
+
 app.use(express.json());
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-
-// ============ VERSION WISE ROUTE CONTROL START ============
+// <><><><><><><> ROUTE CONTROL BASED ON VERSION <><><><><><><>
 app.use(v1Routes);
-// ============ VERSION WISE ROUTE CONTROL END ============
+// <><><><><><><> ROUTE CONTROL END <><><><><><><>
 
 app.get(BASE_URL + '/ping', function (req, res) {
   res.status(200).send('pong');
@@ -49,6 +45,6 @@ app.use(function (err, req, res, next) {
 
 let port = process.env.PORT || 8000;
 console.log(`Server is running on port ${port}`);
-app.listen(port)
+app.listen(port);
 
 module.exports = app;

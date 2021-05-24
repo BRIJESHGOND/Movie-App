@@ -1,6 +1,6 @@
 
 let HttpService = require('./httpService');
-let config = require('../config/');
+let config = require('../config/index');
 let constant = require('../config/constant.json');
 
 

@@ -2,9 +2,8 @@ const requireHelper = require('../../helper/require-helper');
 const safePromise = requireHelper.safePromise;
 const reqValidation = require('../validation/getmovies');
 const movieService = require('../../service/rapidApiService');
-// const redisCache = require('../../helper/cache-helper');
+const redisCache = require('../../helper/cache-helper');
 const _ = requireHelper._;
-
 
 let getVideoList = async (resultMovies) => {
   let response = [];
@@ -38,6 +37,8 @@ let getVideoList = async (resultMovies) => {
     return response;
   }
 }
+
+
 /* getMovies API*/
 let getMovies = async (req, res) => {
   try {
@@ -50,15 +51,15 @@ let getMovies = async (req, res) => {
         message: validationErrors
       });
     }
-    /* Get redis data */
-    // const redisData = redisCache.getRedisData(reqBody.title);
-    // if (!_.isNull(redisData)) {
-    //   return res.status(200).send({
-    //     status: 200,
-    //     message: 'success',
-    //     data: JSON.parse(redisData)
-    //   });
-    // }
+
+    let [errorRedis, redisData] = await safePromise(redisCache.getRedisData(reqBody.title));
+    if (!_.isNull(redisData) || !_.isEmpty(redisData)) {
+      return res.status(200).send({
+        status: 200,
+        message: 'success',
+        data: JSON.parse(redisData)
+      });
+    }
 
     /* get movie details */
     const [errorMovie, resultMovies] = await safePromise(movieService.getMovieDetails(reqBody.title));
@@ -80,30 +81,22 @@ let getMovies = async (req, res) => {
           data: []
         });
       }
+      if (!_.isNull(resultMovieList) || !_.isEmpty(resultMovieList)) {
+        await redisCache.setRedisData(reqBody.title, resultMovieList);
+        return res.status(200).send({
+          status: 200,
+          success: true,
+          message: 'success',
+          data: resultMovieList
+        });
 
-      return res.status(200).send({
-        status: 200,
-        success: true,
-        message: 'success',
-        data: resultMovieList
-      });
-
-      /* Set redis data */
-      // if (!_.isNull(response) || !_.isEmpty(response)) {
-      //   redisCache.setRedisData(reqBody.title, JSON.stringify(response));
-      //   return res.status(200).send({
-      //     status: 200,
-      //     success: true,
-      //     message: 'success',
-      //     data: response
-      //   });
-      // } else {
-      // return res.status(200).send({
-      //   status: 200,
-      //   success: true,
-      //   data: response
-      // });
-      // }
+      } else {
+        return res.status(200).send({
+          status: 200,
+          success: true,
+          data: response
+        });
+      }
     } else {
       return res.status(200).send({
         status: 200,

@@ -1,22 +1,25 @@
 const config = require('../config/');
 const redis = require("redis");
 const client = redis.createClient(config.redisConnObj);
+const redisExpires = config.setExpiresIn;
+
+
 const {
     promisify
 } = require("util");
 
 client.on("error", function (error) {
-    console.error(error);
+    console.error('error', error);
 });
 
 
-const getRedisData = (reqBody) => {
+const getRedisData = (reqKey) => {
     const getCacheData = promisify(client.get).bind(client);
-    return getCacheData(reqBody.title);
+    return getCacheData(reqKey);
 }
 
-const setRedisData = (reqBody, movieData) => {
-    return client.setex(reqBody.title, config.redisCacheExpiresIn.movieList, JSON.stringify(movieData));
+const setRedisData = (reqKey, movieData) => {
+    return client.setex(reqKey, redisExpires.movieList, JSON.stringify(movieData));
 }
 
 
