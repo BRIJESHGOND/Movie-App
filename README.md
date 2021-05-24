@@ -43,7 +43,6 @@ Please note that in order to start this app you will require a ***'.env'_** file
       * getmovies.js
       * validation ->getmovies.js
       * v1Router.js
-* bin
 * config
      * constant.json
      * index.js
@@ -52,14 +51,10 @@ Please note that in order to start this app you will require a ***'.env'_** file
      * require-helper.js
 * middleware
      * authToken.js
-* nodemodule
+* node_modules
 * public
-* routes
-    * index.js
-    * users.js
 * service
     * httpService.js
     * rapidApiService.js
-* views
 * app.js
 * package.json
